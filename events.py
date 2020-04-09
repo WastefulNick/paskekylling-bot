@@ -22,9 +22,9 @@ class EventsCog(commands.Cog, name="Events"):
 
     @commands.Cog.listener()
     async def on_message_edit(self, before, after):
-        if message.author.bot:
+        if after.author.bot:
             return
-            
+
         msg = after.content.lower()
 
         cb_chnl_ids = [656583866600914953, 697736009357721630]
