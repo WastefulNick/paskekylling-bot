@@ -14,7 +14,7 @@ prefix = '!'
 bot = commands.Bot(command_prefix=prefix, description='Bot som gir info om PHST CTF 2020')
 bot.remove_command('help')
 
-extensions = ['commands']
+extensions = ['commands', 'events']
 
 if __name__ == '__main__':
     for extension in extensions:
