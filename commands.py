@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 import requests
 from api import API
+import os
+import sys
 
 class CommandsCog(commands.Cog, name="Score Kommandoer"):
     def __init__(self, bot):
@@ -62,6 +64,13 @@ class CommandsCog(commands.Cog, name="Score Kommandoer"):
                 await ctx.send(embed=embed)
             else:
                 await ctx.send('Ingen bruker med dette navnet!')
+
+    @commands.command()
+    @commands.is_owner()
+    @commands.dm_only()
+    async def restart(self, ctx):
+        await ctx.send('Restarting...')
+        os.execv(sys.executable, ['python3'] + sys.argv)
 
 def setup(bot):
     bot.add_cog(CommandsCog(bot))
