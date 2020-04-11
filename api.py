@@ -24,6 +24,14 @@ class API():
                 return item['id']
         return 0
 
+    def getChalls(self): 
+        r = s.get(url='https://ctf.phst.no/api/v1/challenges')
+        parsed = json.loads(r.text[23:-2])
+        challs = []
+        for item in parsed:
+            challs.append(item['name'])
+        return challs
+
     def getChallScore(self, id):
         r = s.get(url=f'https://ctf.phst.no/api/v1/challenges/{id}/solves')
         parsed = json.loads(r.text[23:-2])

@@ -18,7 +18,9 @@ class CommandsCog(commands.Cog, name="Score Kommandoer"):
             embed.set_footer(text=f'Etterspurt av: {ctx.message.author.name}')
             await ctx.send(embed=embed)
         else:
-            await ctx.send('Ingen challenge med dette navnet!')
+            challs = API().getChalls()
+            chall_string = '`, `'.join(challs)
+            await ctx.send(f'Ingen challenge med dette navnet!\nAlle challenger: `{chall_string}`.')
     
     @commands.command()
     async def score(self, ctx, *args):
